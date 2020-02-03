@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using IctinosEF.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace IctinosEF
 {
@@ -15,6 +16,15 @@ namespace IctinosEF
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.UseSerialColumns();
+
+            modelBuilder.Entity<Wallet>();
+            modelBuilder.Entity<Coin>();
+            modelBuilder.Entity<User>();
         }
+
+        public DbSet<Coin> Coins { get; set; }
+        public DbSet<Wallet> Wallets { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
